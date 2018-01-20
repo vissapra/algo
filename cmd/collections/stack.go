@@ -1,4 +1,4 @@
-package main
+package collections
 
 import "fmt"
 
@@ -6,14 +6,17 @@ type Stack struct {
 	data []interface{}
 }
 
+//Creates a new Stack
 func New() *Stack {
 	return &Stack{data: make([]interface{}, 0)}
 }
 
+//Push to the top of the Stack
 func (s *Stack) Push(val interface{}) {
 	s.data = append(s.data, val)
 }
 
+//Pop from the top of the Stack
 func (s *Stack) Pop() interface{} {
 	if len(s.data) > 0 {
 		val := s.data[len(s.data)-1]
@@ -25,11 +28,11 @@ func (s *Stack) Pop() interface{} {
 
 func main() {
 	stack := New()
-	for i := 'A'; i < 'Z'; i++ {
+	for i := 'A'; i <= 'Z'; i++ {
 		stack.Push(i)
 	}
 	for i := 'A'; i <= 'Z'; i++ {
-		fmt.Printf("%c\n",stack.Pop())
+		fmt.Printf("%c\n", stack.Pop())
 	}
 
 }
