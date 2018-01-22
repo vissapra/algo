@@ -7,13 +7,17 @@ type Stack struct {
 }
 
 //Creates a new Stack
-func New() *Stack {
+func NewStack() *Stack {
 	return &Stack{data: make([]interface{}, 0)}
 }
 
 //Push to the top of the Stack
 func (s *Stack) Push(val interface{}) {
 	s.data = append(s.data, val)
+}
+
+func (s *Stack) Len() int {
+	return len(s.data)
 }
 
 //Pop from the top of the Stack
@@ -26,13 +30,10 @@ func (s *Stack) Pop() interface{} {
 	return nil
 }
 
-func main() {
-	stack := New()
-	for i := 'A'; i <= 'Z'; i++ {
-		stack.Push(i)
+func (s Stack) String() string {
+	val := ""
+	for range s.data {
+		val = val + fmt.Sprintf("%v", s.Pop()) + ","
 	}
-	for i := 'A'; i <= 'Z'; i++ {
-		fmt.Printf("%c\n", stack.Pop())
-	}
-
+	return val
 }
